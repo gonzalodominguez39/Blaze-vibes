@@ -1,69 +1,68 @@
-# React + TypeScript + Vite
+# Blaze Vibes 🔥🎶
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Blaze Vibes** es una aplicación web moderna para escuchar música, construida con **React**, **TypeScript** y **Tailwind CSS**. Disfruta de una experiencia de usuario fluida y visualmente atractiva para explorar y reproducir tus canciones favoritas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🚀 Características principales
 
-## Expanding the ESLint configuration
+* **Reproducción de música:** Toca, pausa, salta y repite canciones.
+* **Interfaz de usuario moderna:** Diseño limpio y responsivo gracias a **Tailwind CSS**.
+* **Búsqueda:** Encuentra rápidamente tus artistas, álbumes y canciones.
+* **Listas de reproducción:** Crea y gestiona tus propias listas de música.
+* **Tipado estático:** La robustez de **TypeScript** asegura un código más seguro y fácil de mantener.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 💻 Tecnologías utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+* **React:** Biblioteca de JavaScript para construir interfaces de usuario.
+* **TypeScript:** Un superconjunto de JavaScript que añade tipado estático.
+* **Tailwind CSS:** Un framework CSS de primera clase para construir diseños personalizados rápidamente.
+* **Audius API**: Por ejemplo, Spotify API, YouTube Data API, etc. (Si no usas una API, puedes omitir este punto o especificar cómo obtienes los datos).
+* **[Otras librerías relevantes]**: Por ejemplo, `react-router-dom` para la navegación, `redux` o `zustand` para la gestión de estado, etc.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### ⚙️ Instalación
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Sigue estos pasos para tener el proyecto funcionando en tu máquina local:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Clona el repositorio:**
+    ```bash
+    git clone git@github.com:gonzalodominguez39/Blaze-vibes.git
+    # o
+    git clone https://github.com/gonzalodominguez39/Blaze-vibes.git
+    cd blaze-vibes
+    ```
+2.  **Instala las dependencias:**
+    ```bash
+    npm install
+    # o
+    yarn install
+    ```
+
+
+4.  **Inicia la aplicación:**
+    ```bash
+    npm run dev
+    # o
+    yarn dev
+    ```
+    La aplicación estará disponible en `http://localhost:5173` (o el puerto que se indique).
+
+---
+
+### 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Si deseas mejorar **Blaze Vibes**, puedes:
+
+1.  Hacer un **fork** del repositorio.
+2.  Crear una nueva rama (`git checkout -b feature/nueva-caracteristica`).
+3.  Realizar tus cambios y hacer **commit** (`git commit -m 'feat: Añadir nueva característica'`).
+4.  Subir tus cambios (`git push origin feature/nueva-caracteristica`).
+5.  Abrir un **Pull Request** explicando los cambios.
+
+
+
+¡Disfruta de la música con **Blaze Vibes**! 🚀
