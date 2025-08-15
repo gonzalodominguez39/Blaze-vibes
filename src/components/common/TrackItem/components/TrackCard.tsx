@@ -1,4 +1,4 @@
-import type { Daum } from "../../../types/TrackResponse";
+import type { Daum } from "../../../../types/TrackResponse";
 
 interface TrackCardProps {
   track: Daum;
@@ -21,8 +21,11 @@ export const TrackCard = ({ track }: TrackCardProps) => {
     return num.toString();
   };
 
+ 
   return (
-    <div className="group relative bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 rounded-2xl p-5 hover:from-zinc-800 hover:via-zinc-700 hover:to-zinc-800 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-green-500/20 border border-zinc-700/50 hover:border-green-500/30">
+    <div 
+      className="group relative bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 rounded-2xl p-5 hover:from-zinc-800 hover:via-zinc-700 hover:to-zinc-800 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-fuchsia-500/20 border border-zinc-700/50 hover:border-fuchsia-500/30"
+    >
       {/* Imagen del track con efectos */}
       <div className="relative mb-4 overflow-hidden rounded-xl">
         <img
@@ -36,7 +39,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
 
         {/* Botón de play central */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <button className="bg-green-500 hover:bg-green-400 text-black rounded-full p-3 shadow-2xl hover:scale-110 transition-all duration-200 backdrop-blur-sm">
+          <button className="bg-fuchsia-500 hover:bg-fuchsia-400 cursor-pointer text-black rounded-full p-3 shadow-2xl hover:scale-110 transition-all duration-200 backdrop-blur-sm">
             <svg
               className="w-4 h-4 ml-0.5"
               fill="currentColor"
@@ -57,7 +60,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
         </div>
 
         {/* Indicador de trending */}
-        <div className="absolute top-2 left-2 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1 rounded-md font-bold">
+        <div className="absolute top-2 left-2 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">
           🔥
         </div>
       </div>
@@ -66,7 +69,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
       <div className="space-y-3">
         {/* Título con gradiente */}
         <h3
-          className="text-white font-bold text-lg leading-tight bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent group-hover:from-green-400 group-hover:to-blue-400 transition-all duration-300"
+          className="text-white font-bold text-lg leading-tight bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent group-hover:from-fuchsia-400 group-hover:to-pink-400 transition-all duration-300"
           style={{
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -83,9 +86,9 @@ export const TrackCard = ({ track }: TrackCardProps) => {
             <img
               src={track.user.profile_picture?.["150x150"]}
               alt={track.user.name}
-              className="w-8 h-8 rounded-full border-2 border-zinc-600 group-hover:border-green-500 transition-colors duration-300"
+              className="w-8 h-8 rounded-full border-2 border-zinc-600 group-hover:border-fuchsia-500 transition-colors duration-300"
             />
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-zinc-900"></div>
+            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-fuchsia-500 rounded-full border-2 border-zinc-900"></div>
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-zinc-300 text-sm font-medium truncate group-hover:text-white transition-colors">
@@ -98,57 +101,55 @@ export const TrackCard = ({ track }: TrackCardProps) => {
         </div>
 
         {/* Estadísticas en grid mejorado */}
-        <div className="grid grid-cols-3 gap-3 text-xs bg-zinc-800/50 rounded-lg p-3">
+        <div className="grid grid-cols-3 gap-3 text-xs bg-gradient-to-r from-zinc-800/50 to-zinc-700/50 rounded-lg p-3 border border-zinc-600/30">
           <div className="text-center">
-            <div className="text-green-500 text-lg">▶</div>
-            <div className="text-zinc-400 font-medium mt-1">
+            <div className="text-fuchsia-500 text-lg">▶</div>
+            <div className="text-zinc-300 font-semibold mt-1">
               {formatNumber(track.play_count)}
             </div>
-            <div className="text-zinc-500 text-xs">plays</div>
+            <div className="text-zinc-400 text-xs">plays</div>
           </div>
 
-          <div className="text-center border-l border-r border-zinc-700">
-            <div className="text-red-500 text-lg">♥</div>
-            <div className="text-zinc-400 font-medium mt-1">
+          <div className="text-center border-l border-r border-zinc-600/50">
+            <div className="text-pink-500 text-lg">♥</div>
+            <div className="text-zinc-300 font-semibold mt-1">
               {formatNumber(track.favorite_count)}
             </div>
-            <div className="text-zinc-500 text-xs">likes</div>
+            <div className="text-zinc-400 text-xs">likes</div>
           </div>
 
           <div className="text-center">
-            <div className="text-blue-500 text-lg">↻</div>
-            <div className="text-zinc-400 font-medium mt-1">
+            <div className="text-purple-500 text-lg">↻</div>
+            <div className="text-zinc-300 font-semibold mt-1">
               {formatNumber(track.repost_count)}
             </div>
-            <div className="text-zinc-500 text-xs">reposts</div>
+            <div className="text-zinc-400 text-xs">reposts</div>
           </div>
         </div>
 
-        {/* Género */}
         {track.genre && (
           <div className="text-center">
-            <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-2 py-1 rounded-md text-xs font-medium">
+            <span className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
               {track.genre}
             </span>
           </div>
         )}
 
-        {/* Barra de progreso decorativa */}
         <div className="w-full h-1 bg-zinc-700 rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out"></div>
+          <div className="h-full bg-gradient-to-r from-fuchsia-500 to-blue-500 rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out"></div>
         </div>
 
         {/* Botones de acción simplificados */}
         <div className="flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <button className="text-zinc-400 hover:text-red-500 transition-colors text-sm">
+          <button className="text-zinc-400 hover:text-pink-500 transition-colors text-sm font-medium">
             ♥ Like
           </button>
 
-          <button className="text-zinc-400 hover:text-blue-500 transition-colors text-sm">
+          <button className="text-zinc-400 hover:text-fuchsia-500 transition-colors text-sm font-medium">
             📤 Share
           </button>
 
-          <button className="text-zinc-400 hover:text-white transition-colors text-sm">
+          <button className="text-zinc-400 hover:text-white transition-colors text-sm font-medium">
             ⋯ More
           </button>
         </div>

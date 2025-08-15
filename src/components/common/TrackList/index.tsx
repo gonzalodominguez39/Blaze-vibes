@@ -1,8 +1,8 @@
-import type { Daum } from "../../types/TrackResponse";
+import type { Track } from "../../../types/Track";
 import { TrackItem } from "../TrackItem";
 
 interface TrackListProps {
-  tracks: Daum[];
+  tracks: Track[];
 }
 
 export const TrackList = ({ tracks }: TrackListProps) => {

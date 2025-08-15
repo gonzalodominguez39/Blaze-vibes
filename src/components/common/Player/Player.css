@@ -1,0 +1,258 @@
+/* Estilos personalizados para el reproductor de audio */
+.player-container {
+  backdrop-filter: blur(10px);
+}
+
+.custom-audio-player {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Botón de play principal */
+.custom-audio-player .rhap_play-pause-button {
+  background: linear-gradient(135deg, #d946ef, #ec4899) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 56px !important;
+  height: 56px !important;
+  box-shadow: 0 8px 25px rgba(217, 70, 239, 0.3) !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+}
+
+.custom-audio-player .rhap_play-pause-button:hover {
+  background: linear-gradient(135deg, #c026d3, #db2777) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 12px 30px rgba(217, 70, 239, 0.4) !important;
+}
+
+.custom-audio-player .rhap_play-pause-button svg {
+  fill: white !important;
+  width: 24px !important;
+  height: 24px !important;
+  margin-left: 2px !important;
+}
+
+/* Botones de skip (anterior/siguiente) */
+.custom-audio-player .rhap_skip-back-button,
+.custom-audio-player .rhap_skip-forward-button {
+  background: rgba(161, 161, 170, 0.1) !important;
+  border: 1px solid rgba(217, 70, 239, 0.2) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  margin: 0 !important;
+}
+
+.custom-audio-player .rhap_skip-back-button:hover,
+.custom-audio-player .rhap_skip-forward-button:hover {
+  background: rgba(217, 70, 239, 0.2) !important;
+  border-color: #d946ef !important;
+  transform: scale(1.05) !important;
+}
+
+.custom-audio-player .rhap_skip-back-button svg,
+.custom-audio-player .rhap_skip-forward-button svg {
+  fill: #a1a1aa !important;
+  width: 18px !important;
+  height: 18px !important;
+  transition: fill 0.2s ease !important;
+}
+
+.custom-audio-player .rhap_skip-back-button:hover svg,
+.custom-audio-player .rhap_skip-forward-button:hover svg {
+  fill: #d946ef !important;
+}
+
+/* Botones de jump (salto rápido) */
+.custom-audio-player .rhap_rewind-button,
+.custom-audio-player .rhap_forward-button {
+  background: transparent !important;
+  border: 1px solid rgba(161, 161, 170, 0.3) !important;
+  border-radius: 8px !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  margin: 0 !important;
+}
+
+.custom-audio-player .rhap_rewind-button:hover,
+.custom-audio-player .rhap_forward-button:hover {
+  background: rgba(217, 70, 239, 0.1) !important;
+  border-color: #d946ef !important;
+  transform: scale(1.05) !important;
+}
+
+.custom-audio-player .rhap_rewind-button svg,
+.custom-audio-player .rhap_forward-button svg {
+  fill: #71717a !important;
+  width: 16px !important;
+  height: 16px !important;
+  transition: fill 0.2s ease !important;
+}
+
+.custom-audio-player .rhap_rewind-button:hover svg,
+.custom-audio-player .rhap_forward-button:hover svg {
+  fill: #d946ef !important;
+}
+
+/* Barra de progreso */
+.custom-audio-player .rhap_progress-container {
+  background: rgba(63, 63, 70, 0.5) !important;
+  border-radius: 8px !important;
+  height: 6px !important;
+  margin: 0 16px !important;
+}
+
+.custom-audio-player .rhap_progress-bar {
+  background: linear-gradient(90deg, #d946ef, #ec4899) !important;
+  border-radius: 8px !important;
+  height: 6px !important;
+}
+
+.custom-audio-player .rhap_progress-indicator {
+  background: #ffffff !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 2px solid #d946ef !important;
+  box-shadow: 0 2px 8px rgba(217, 70, 239, 0.3) !important;
+  top: -5px !important;
+}
+
+.custom-audio-player .rhap_progress-indicator:hover {
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(217, 70, 239, 0.5) !important;
+}
+
+/* Tiempo actual y duración */
+.custom-audio-player .rhap_time {
+  color: #a1a1aa !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.custom-audio-player .rhap_current-time {
+  color: #d946ef !important;
+}
+
+/* Controles de volumen */
+.custom-audio-player .rhap_volume-button {
+  color: #a1a1aa !important;
+  transition: color 0.2s ease !important;
+}
+
+.custom-audio-player .rhap_volume-button:hover {
+  color: #d946ef !important;
+}
+
+.custom-audio-player .rhap_volume-container {
+  margin-left: 12px !important;
+}
+
+.custom-audio-player .rhap_volume-bar-area {
+  background: rgba(63, 63, 70, 0.5) !important;
+  border-radius: 4px !important;
+  height: 4px !important;
+}
+
+.custom-audio-player .rhap_volume-bar {
+  background: linear-gradient(90deg, #d946ef, #ec4899) !important;
+  border-radius: 4px !important;
+  height: 4px !important;
+}
+
+.custom-audio-player .rhap_volume-indicator {
+  background: #ffffff !important;
+  width: 12px !important;
+  height: 12px !important;
+  border: 2px solid #d946ef !important;
+  top: -4px !important;
+}
+
+/* Contenedor principal */
+.custom-audio-player .rhap_container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 0 !important;
+  gap: 20px !important;
+}
+
+.custom-audio-player .rhap_main-controls {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+}
+
+.custom-audio-player .rhap_main-controls-button {
+  margin: 0 !important;
+}
+
+.custom-audio-player .rhap_additional-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .custom-audio-player .rhap_progress-container {
+    margin: 0 8px !important;
+  }
+
+  .custom-audio-player .rhap_volume-container {
+    margin-left: 8px !important;
+  }
+
+  .custom-audio-player .rhap_play-pause-button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .custom-audio-player .rhap_play-pause-button svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* Estados de carga */
+.custom-audio-player .rhap_progress-bar.rhap_progress-bar-show-download {
+  background: linear-gradient(
+    90deg,
+    rgba(217, 70, 239, 0.3),
+    rgba(236, 72, 153, 0.3)
+  ) !important;
+}
+
+/* Animaciones */
+@keyframes pulse-fuchsia {
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(217, 70, 239, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(217, 70, 239, 0.6);
+  }
+}
+
+.custom-audio-player
+  .rhap_play-pause-button.rhap_button-clear:not(
+    .rhap_button-clear:disabled
+  ):hover {
+  animation: pulse-fuchsia 2s infinite;
+}
