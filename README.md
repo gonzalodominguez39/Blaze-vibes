@@ -19,8 +19,11 @@
 * **React:** Biblioteca de JavaScript para construir interfaces de usuario.
 * **TypeScript:** Un superconjunto de JavaScript que añade tipado estático.
 * **Tailwind CSS:** Un framework CSS de primera clase para construir diseños personalizados rápidamente.
-* **Audius API**: Por ejemplo, Spotify API, YouTube Data API, etc. (Si no usas una API, puedes omitir este punto o especificar cómo obtienes los datos).
-* **[Otras librerías relevantes]**: Por ejemplo, `react-router-dom` para la navegación, `redux` o `zustand` para la gestión de estado, etc.
+* **TanStack Query (React Query):** Para la gestión del estado del servidor, fetching, caching y actualización de datos.
+* **React Router DOM:** Para la navegación y el enrutamiento en la aplicación.
+* **Axios:** Para realizar peticiones HTTP a la API de Audius.
+* **React H5 Audio Player:** Un componente de reproductor de audio personalizable para React.
+* **Audius API**: Para obtener datos de canciones, artistas y tendencias.
 
 ---
 
