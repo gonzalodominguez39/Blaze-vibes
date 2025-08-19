@@ -5,16 +5,13 @@ import { NavBar } from "../../components/common/NavBar";
 import { useState } from "react";
 
 export const Home = () => {
-  const [query, setQuery] = useState("");
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["tracks", query],
-    queryFn: () => (query ? fetchTracksByQuery(query) : fetchTrendingTracks()),
+    queryKey: ["tracks"],
+    queryFn: () => (fetchTrendingTracks()),
   });
 
-  const handleSearch = (searchQuery: string) => {
-    setQuery(searchQuery);
-  };
+
 
   if (isLoading) {
     return (
@@ -37,7 +34,7 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen w-full bg-black p-2">
-      <NavBar handleSearch={handleSearch} TracksLength={data?.data?.length} />
+      <NavBar TracksLength={data?.data?.length} />
 
       <div className="w-full px-6 py-8">
         {data?.data && <TrackList tracks={data.data} />}

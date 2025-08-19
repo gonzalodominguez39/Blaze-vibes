@@ -4,7 +4,8 @@ import type { TrackDetail } from "../../types/Track";
 import { API_BASE_URL, ENDPOINTS } from "../../constant/API";
 
 export const fetchTrendingTracks = async (): Promise<TrackResponse | null> => {
-    try {
+  console.log("fetch")
+  try {
       const { data } = await instance.get<TrackResponse>(ENDPOINTS.TRENDING_TRACKS);
       return data;
     } catch (error) {
@@ -26,6 +27,7 @@ export const fetchTrendingTracks = async (): Promise<TrackResponse | null> => {
   };
 
   export const fetchTracksByQuery = async (query: string): Promise<TrackResponse | null> => {
+    console.log("fetch query");
     try {
       const { data } = await instance.get<TrackResponse >(`${API_BASE_URL}${ENDPOINTS.SEARCHTRACKS}${query}`);
       console.log(`${API_BASE_URL}${ENDPOINTS.SEARCHTRACKS}${query}`)
