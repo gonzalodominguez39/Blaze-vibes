@@ -1,6 +1,6 @@
 import Blaze from "../../../assets/Blaze.png";
 import { Menu } from "./components/Menu";
-import { SearchBar } from "./components/SearchBar";
+
 type NavBarProps = {
   TracksLength?:Number|undefined
   handleSearch?:(query:string) => void
@@ -33,11 +33,8 @@ export const NavBar = ({TracksLength,handleSearch}:NavBarProps) => {
         <div>
           <Menu />
         </div>
-      
 
         </div>
-
-        {/* Botones de acción */}
         <div className="flex items-center space-x-6">
           <button className="bg-fuchsia-900 hover:bg-fuchsia-800 cursor-pointer text-black rounded-full p-4 transition-all duration-200 hover:scale-105">
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">

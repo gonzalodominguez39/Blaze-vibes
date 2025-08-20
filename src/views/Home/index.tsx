@@ -2,7 +2,6 @@ import { TrackList } from "../../components/common/TrackList";
 import { fetchTrendingTracks, fetchTracksByQuery } from "../../services/api/trackService";
 import { useQuery } from "@tanstack/react-query";
 import { NavBar } from "../../components/common/NavBar";
-import { useState } from "react";
 
 export const Home = () => {
 

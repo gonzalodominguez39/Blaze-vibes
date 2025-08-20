@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom";
 
-export const BackButton = () => {
+type BackButtonProps = {
+  path: string;
+  
+};
+
+export const BackButton = ({ path }: BackButtonProps) => {
   const navigate = useNavigate();
 
   return (
     <button 
-      onClick={() => navigate('/')}
+      onClick={() => navigate(path)}
       className="flex items-center cursor-pointer text-zinc-400 hover:text-fuchsia-400 transition-colors mb-8 group"
     >
       <svg className="w-6 h-6 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

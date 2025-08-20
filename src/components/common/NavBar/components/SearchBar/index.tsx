@@ -12,7 +12,7 @@ export const SearchBar = ({ handleSearch }: propsSearch) => {
   return (
     <div
       onKeyDown={(e) => e.key === "Enter" && handleSearch(search)}
-      className="w-full mt-10 max-w-2xl mx-auto px-4"
+      className="w-full max-w-2xl mx-auto px-4"
     >
       <div className="flex items-center space-x-4">
         <div className="relative flex-1">

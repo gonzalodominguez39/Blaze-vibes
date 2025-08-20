@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrackById } from "../../services/api/trackService";
 import { API_BASE_URL } from "../../constant/API";
+import { BackButton } from "../../components/common/BackButton";
 import type { Track } from "../../types/Track";
 
 import {
@@ -10,7 +11,6 @@ import {
   TrackDescription,
   TrackArtwork,
   TrackDetails,
-  BackButton,
   LoadingState,
   ErrorState,
 } from "./components";
@@ -48,9 +48,7 @@ export const Detail = () => {
       <div className="min-h-screen bg-black">
         <div className="bg-gradient-to-b from-zinc-900 via-zinc-800 to-black">
           <div className="w-full px-6 py-8">
-            <BackButton />
-
-            {/* Información principal del track */}
+            <BackButton path="/"/>
             <div className="flex flex-col lg:flex-row items-start lg:items-end space-y-6 lg:space-y-0 lg:space-x-8">
               <TrackArtwork track={track} />
               <TrackInfo track={track} />

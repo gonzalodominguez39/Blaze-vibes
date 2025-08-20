@@ -38,3 +38,16 @@ export const fetchTrendingTracks = async (): Promise<TrackResponse | null> => {
       return null;
     }
   };
+
+    export const fetchTracksUnderground = async (): Promise<TrackResponse | null> => {
+    console.log("fetch query");
+    try {
+      const { data } = await instance.get<TrackResponse >(`${API_BASE_URL}${ENDPOINTS.UNDERGROUNDTRACKS}`);
+      console.log(`${API_BASE_URL}${ENDPOINTS.UNDERGROUNDTRACKS}`)
+      console.log("desde fetch",data)
+      return data;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
