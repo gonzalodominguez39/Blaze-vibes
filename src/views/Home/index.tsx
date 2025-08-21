@@ -1,16 +1,27 @@
 import { TrackList } from "../../components/common/TrackList";
-import { fetchTrendingTracks, fetchTracksByQuery } from "../../services/api/trackService";
+import {
+  fetchTrendingTracks,
+} from "../../services/api/trackService";
 import { useQuery } from "@tanstack/react-query";
 import { NavBar } from "../../components/common/NavBar";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 export const Home = () => {
+const isLogin = localStorage.getItem("isLogin") === "true";
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["tracks"],
-    queryFn: () => (fetchTrendingTracks()),
+    queryFn: () => fetchTrendingTracks(),
   });
+  const navigation = useNavigate();
 
+useEffect(() => {
 
+  if (!isLogin) {
+    navigation("/login");
+  } 
+}, [isLogin, navigation]);
 
   if (isLoading) {
     return (

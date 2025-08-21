@@ -29,7 +29,6 @@ export const NavBar = ({TracksLength,handleSearch}:NavBarProps) => {
             </p>
           </div>
         </div>
-        {/*<SearchBar handleSearch={handleSearch} />*/}
         <div>
           <Menu />
         </div>
@@ -72,4 +71,3 @@ export const NavBar = ({TracksLength,handleSearch}:NavBarProps) => {
     </div>
   )
 }
-
