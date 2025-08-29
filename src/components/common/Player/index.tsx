@@ -9,7 +9,6 @@ export const Player = () => {
   const { url, pause, play, setVolume, setPlayed, played } = usePlayerStore();
   const playerRef = useRef<AudioPlayer>(null);
 
-  // Reset state when URL changes
   useEffect(() => {
     if (url) {
       setPlayed(0);
@@ -19,7 +18,7 @@ export const Player = () => {
     }
   }, [url, setPlayed]);
 
-  // Handle play request
+
   const handlePlay = () => {
     if (played && playerRef.current?.audio?.current) {
       playerRef.current.audio.current.currentTime = played;
