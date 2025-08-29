@@ -2,10 +2,9 @@ import Blaze from "../../../assets/Blaze.png";
 import { Menu } from "./components/Menu";
 
 type NavBarProps = {
-  TracksLength?:Number|undefined
-  handleSearch?:(query:string) => void
+  TracksLength: number | undefined
 };
-export const NavBar = ({TracksLength,handleSearch}:NavBarProps) => {
+export const NavBar = ({TracksLength}:NavBarProps) => {
     const trendingTracksLength =` Trending tracks from Audius • ${TracksLength} songs`
   return (
 

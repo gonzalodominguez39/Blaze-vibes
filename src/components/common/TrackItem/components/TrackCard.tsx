@@ -1,29 +1,27 @@
+import { usePlayerStore } from "../../../../hooks/usePlayerStore";
 import type  { Track } from "../../../../types/Track";
+import { API_BASE_URL } from "../../../../constant/API";
+import { formatDuration,formatNumber } from "../../../../utils/format";
+import { useNavigate } from "react-router-dom";
 
 interface TrackCardProps {
   track: Track;
 }
 
 export const TrackCard = ({ track }: TrackCardProps) => {
-  const formatDuration = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  const { setUrl,setTrack } = usePlayerStore();
+  const trackStreamUrl = `${API_BASE_URL}/v1/tracks/${track.id}/stream`;
+  const navigate= useNavigate()
+ 
+  const handlePlayTrack = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation
+    setTrack(track)
+    setUrl(trackStreamUrl);
   };
-
-  const formatNumber = (num: number) => {
-    if (num >= 1000000) {
-      return (num / 1000000).toFixed(1) + "M";
-    }
-    if (num >= 1000) {
-      return (num / 1000).toFixed(1) + "K";
-    }
-    return num.toString();
-  };
-
  
   return (
-    <div 
+    <div
+  
       className="group relative bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 rounded-2xl p-5 hover:from-zinc-800 hover:via-zinc-700 hover:to-zinc-800 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-fuchsia-500/20 border border-zinc-700/50 hover:border-fuchsia-500/30"
     >
 
@@ -39,7 +37,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
 
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <button className="bg-gray-500 hover:bg-fuchsia-400 cursor-pointer text-black rounded-full p-3 shadow-2xl hover:scale-110 transition-all duration-200 backdrop-blur-sm">
+          <button onClick={e=>handlePlayTrack(e)} className="bg-gray-500 hover:bg-fuchsia-400 cursor-pointer text-black rounded-full p-3 shadow-2xl hover:scale-110 transition-all duration-200 backdrop-blur-sm">
             <svg
               className="w-4 h-4 ml-0.5"
               fill="currentColor"
@@ -65,7 +63,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-3"   onClick={()=>navigate(`detail/${track.id}`)} >
         <h3
           className="text-white font-bold text-lg leading-tight bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent group-hover:from-fuchsia-400 group-hover:to-pink-400 transition-all duration-300"
           style={{

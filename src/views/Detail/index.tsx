@@ -20,8 +20,7 @@ import { Player } from "../../components/common/Player";
 
 export const Detail = () => {
   const { id } = useParams<{ id: string }>();
-  const trackStreamUrl = `${API_BASE_URL}/v1/tracks/${id}/stream`;
-  const { setUrl } = usePlayerStore();
+  const { setTrack, setUrl } = usePlayerStore();
 
   const {
     data: response,
@@ -34,9 +33,14 @@ export const Detail = () => {
   });
 
   const track: Track | undefined = response?.data || undefined;
+  const trackStreamUrl = track ? `${API_BASE_URL}/v1/tracks/${track.id}/stream` : null;
+
   useEffect(() => {
-    setUrl(trackStreamUrl);
-  }, [trackStreamUrl, setUrl]);
+    if (track && trackStreamUrl) {
+      setTrack(track);
+      setUrl(trackStreamUrl);
+    }
+  }, [track, trackStreamUrl, setTrack, setUrl]);
 
   if (isLoading) {
     return <LoadingState />;
@@ -45,32 +49,31 @@ export const Detail = () => {
   if (error || !track) {
     return <ErrorState />;
   }
-  localStorage.setItem("Track", JSON.stringify(track));
 
   return (
-    track && (
-      <div className="min-h-screen bg-black">
-        <div className="bg-gradient-to-b from-zinc-900 via-zinc-800 to-black">
-          <div className="w-full px-6 py-8">
-            <BackButton path="/" />
-            <div className="flex flex-col lg:flex-row items-start lg:items-end space-y-6 lg:space-y-0 lg:space-x-8">
-              <TrackArtwork track={track} />
-              <TrackInfo track={track} />
-            </div>
+    <div className="min-h-screen bg-black">
+      <div className="bg-gradient-to-b from-zinc-900 via-zinc-800 to-black">
+        <div className="w-full px-6 py-8">
+          <BackButton path="/" />
+          <div className="flex flex-col lg:flex-row items-start lg:items-end space-y-6 lg:space-y-0 lg:space-x-8">
+            <TrackArtwork track={track} />
+            <TrackInfo track={track} />
           </div>
         </div>
-        <div className="w-full px-6 py-8">
-          {trackStreamUrl ? (
-            <Player/>
-          ) : (
-            <div>Track is not available for streaming</div>
-          )}
-
-          <TrackStats track={track} />
-          <TrackDescription track={track} />
-          <TrackDetails track={track} />
-        </div>
       </div>
-    )
+      <div className="w-full px-6 py-8">
+        {trackStreamUrl ? (
+          <Player />
+        ) : (
+          <div className="text-zinc-400 text-center py-8">
+            Track is not available for streaming
+          </div>
+        )}
+
+        <TrackStats track={track} />
+        <TrackDescription track={track} />
+        <TrackDetails track={track} />
+      </div>
+    </div>
   );
 };

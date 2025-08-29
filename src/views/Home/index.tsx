@@ -44,16 +44,14 @@ useEffect(() => {
   }
 
   return (
-    <div className=" flex row">
-
-    <div className="min-h-screen w-full bg-black p-2">
-      <NavBar TracksLength={data?.data?.length} />
-
-      <div className="w-full px-6 py-8">
-        {data?.data && <TrackList tracks={data.data} />}
+    <div className="min-h-screen bg-black">
+      <div className="pb-24"> {/* Añadido padding-bottom para el player fijo */}
+        <NavBar TracksLength={data?.data?.length} />
+        <div className="w-full px-6 py-8">
+          {data?.data && <TrackList tracks={data.data} />}
+        </div>
       </div>
-    </div>
-    <TrackPlayer />
+      <TrackPlayer  />
     </div>
   );
 };
