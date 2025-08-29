@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrackById } from "../../services/api/trackService";
 import { API_BASE_URL } from "../../constant/API";
 import { BackButton } from "../../components/common/BackButton";
+import { usePlayerStore } from "../../hooks/usePlayerStore";
 import type { Track } from "../../types/Track";
 
 import {
@@ -16,12 +18,11 @@ import {
 } from "./components";
 import { Player } from "../../components/common/Player";
 
-
-
 export const Detail = () => {
   const { id } = useParams<{ id: string }>();
- const trackStreamUrl = `${API_BASE_URL}/v1/tracks/${id}/stream`;
- console.log("trackStreamUrl:", trackStreamUrl);
+  const trackStreamUrl = `${API_BASE_URL}/v1/tracks/${id}/stream`;
+  const { setUrl } = usePlayerStore();
+
   const {
     data: response,
     isLoading,
@@ -33,6 +34,9 @@ export const Detail = () => {
   });
 
   const track: Track | undefined = response?.data || undefined;
+  useEffect(() => {
+    setUrl(trackStreamUrl);
+  }, [trackStreamUrl, setUrl]);
 
   if (isLoading) {
     return <LoadingState />;
@@ -41,14 +45,14 @@ export const Detail = () => {
   if (error || !track) {
     return <ErrorState />;
   }
+  localStorage.setItem("Track", JSON.stringify(track));
 
-  console.log("stream:", track?.stream);
   return (
     track && (
       <div className="min-h-screen bg-black">
         <div className="bg-gradient-to-b from-zinc-900 via-zinc-800 to-black">
           <div className="w-full px-6 py-8">
-            <BackButton path="/"/>
+            <BackButton path="/" />
             <div className="flex flex-col lg:flex-row items-start lg:items-end space-y-6 lg:space-y-0 lg:space-x-8">
               <TrackArtwork track={track} />
               <TrackInfo track={track} />
@@ -56,8 +60,8 @@ export const Detail = () => {
           </div>
         </div>
         <div className="w-full px-6 py-8">
-          {trackStreamUrl? (
-            <Player url={trackStreamUrl} />
+          {trackStreamUrl ? (
+            <Player/>
           ) : (
             <div>Track is not available for streaming</div>
           )}

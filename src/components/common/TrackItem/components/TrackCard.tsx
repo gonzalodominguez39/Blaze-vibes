@@ -1,7 +1,7 @@
-import type { Daum } from "../../../../types/TrackResponse";
+import type  { Track } from "../../../../types/Track";
 
 interface TrackCardProps {
-  track: Daum;
+  track: Track;
 }
 
 export const TrackCard = ({ track }: TrackCardProps) => {
@@ -26,7 +26,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
     <div 
       className="group relative bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 rounded-2xl p-5 hover:from-zinc-800 hover:via-zinc-700 hover:to-zinc-800 transition-all duration-500 cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-fuchsia-500/20 border border-zinc-700/50 hover:border-fuchsia-500/30"
     >
-      {/* Imagen del track con efectos */}
+
       <div className="relative mb-4 overflow-hidden rounded-xl">
         <img
           src={track.artwork?.["480x480"] || track.artwork?.["150x150"]}
@@ -34,12 +34,12 @@ export const TrackCard = ({ track }: TrackCardProps) => {
           className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-110"
         />
 
-        {/* Overlay con gradiente */}
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-        {/* Botón de play central */}
+
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <button className="bg-fuchsia-500 hover:bg-fuchsia-400 cursor-pointer text-black rounded-full p-3 shadow-2xl hover:scale-110 transition-all duration-200 backdrop-blur-sm">
+          <button className="bg-gray-500 hover:bg-fuchsia-400 cursor-pointer text-black rounded-full p-3 shadow-2xl hover:scale-110 transition-all duration-200 backdrop-blur-sm">
             <svg
               className="w-4 h-4 ml-0.5"
               fill="currentColor"
@@ -54,20 +54,18 @@ export const TrackCard = ({ track }: TrackCardProps) => {
           </button>
         </div>
 
-        {/* Duración con estilo mejorado */}
+    
         <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-semibold border border-white/20">
           {formatDuration(track.duration)}
         </div>
 
-        {/* Indicador de trending */}
+    
         <div className="absolute top-2 left-2 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">
           🔥
         </div>
       </div>
 
-      {/* Información del track */}
       <div className="space-y-3">
-        {/* Título con gradiente */}
         <h3
           className="text-white font-bold text-lg leading-tight bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent group-hover:from-fuchsia-400 group-hover:to-pink-400 transition-all duration-300"
           style={{
@@ -79,8 +77,6 @@ export const TrackCard = ({ track }: TrackCardProps) => {
         >
           {track.title}
         </h3>
-
-        {/* Información del artista con mejor diseño */}
         <div className="flex items-center space-x-3">
           <div className="relative">
             <img
@@ -100,7 +96,6 @@ export const TrackCard = ({ track }: TrackCardProps) => {
           </div>
         </div>
 
-        {/* Estadísticas en grid mejorado */}
         <div className="grid grid-cols-3 gap-3 text-xs bg-gradient-to-r from-zinc-800/50 to-zinc-700/50 rounded-lg p-3 border border-zinc-600/30">
           <div className="text-center">
             <div className="text-fuchsia-500 text-lg">▶</div>
@@ -139,7 +134,6 @@ export const TrackCard = ({ track }: TrackCardProps) => {
           <div className="h-full bg-gradient-to-r from-fuchsia-500 to-blue-500 rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out"></div>
         </div>
 
-        {/* Botones de acción simplificados */}
         <div className="flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <button className="text-zinc-400 hover:text-pink-500 transition-colors text-sm font-medium">
             ♥ Like

@@ -11,7 +11,6 @@ export const TrackItem = ({ track }: TrackItemProps) => {
 
   return (
     <div onClick={() => {
-      localStorage.setItem("Track", JSON.stringify(track));
       navigate(`/detail/${track.id}`);
     }}>
       <TrackCard track={track} />

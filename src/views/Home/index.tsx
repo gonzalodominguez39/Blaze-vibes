@@ -5,7 +5,8 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { NavBar } from "../../components/common/NavBar";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
+import { TrackPlayer } from "../../components/common/TrackPlayer";
 
 export const Home = () => {
 const isLogin = localStorage.getItem("isLogin") === "true";
@@ -43,12 +44,16 @@ useEffect(() => {
   }
 
   return (
+    <div className=" flex row">
+
     <div className="min-h-screen w-full bg-black p-2">
       <NavBar TracksLength={data?.data?.length} />
 
       <div className="w-full px-6 py-8">
         {data?.data && <TrackList tracks={data.data} />}
       </div>
+    </div>
+    <TrackPlayer />
     </div>
   );
 };

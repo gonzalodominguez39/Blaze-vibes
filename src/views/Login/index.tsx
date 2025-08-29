@@ -11,13 +11,12 @@ export const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
   const Navigate = useNavigate();
   localStorage.setItem("isLogin", "true");
-
+  console.log(errors)
   return (
     <div className="flex items-center justify-center min-h-screen w-full px-5 sm:px-0 bg-gradient-to-b from-zinc-900 to-black">
       <div className="flex bg-zinc-900/50 rounded-2xl border border-zinc-800 overflow-hidden max-w-sm lg:max-w-4xl w-full backdrop-blur-xl">
