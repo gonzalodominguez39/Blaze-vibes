@@ -78,7 +78,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
         </div>
       </div>
 
-      <div className="space-y-3"   onClick={()=>navigate(`detail/${track.id}`)} >
+      <div className="space-y-3"   onClick={()=>navigate(`/detail/${track.id}`)} >
         <h3
           className="font-bold text-lg leading-tight bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent group-hover:from-fuchsia-400 group-hover:to-pink-400 transition-all duration-300"
           style={{
