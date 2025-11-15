@@ -38,11 +38,13 @@ export const Search = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="pb-24">
-        <div className="flex justify-between items-center mt-10 p-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mt-6 sm:mt-10 px-3 sm:px-4 md:px-6 py-3 sm:py-4">
           <BackButton path="/" />
-          <SearchBar handleSearch={handleSearch} />
+          <div className="w-full sm:w-auto">
+            <SearchBar handleSearch={handleSearch} />
+          </div>
         </div>
-        <div className="w-full px-6 py-8">
+        <div className="w-full px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
           <TrackList tracks={data?.data||[]} />
         </div>
       </div>

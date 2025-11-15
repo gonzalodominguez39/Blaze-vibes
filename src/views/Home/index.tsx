@@ -45,13 +45,13 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-black">
-      <div className="pb-24"> {/* Añadido padding-bottom para el player fijo */}
+      <div className="pb-24 md:pb-24"> {/* Padding-bottom para el player fijo */}
         <NavBar TracksLength={data?.data?.length} />
-        <div className="w-full px-6 py-8">
+        <div className="w-full px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
           {data?.data && <TrackList tracks={data.data} />}
         </div>
       </div>
-      <TrackPlayer  />
+      <TrackPlayer />
     </div>
   );
 };

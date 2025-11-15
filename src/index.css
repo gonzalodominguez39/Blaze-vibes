@@ -2,7 +2,59 @@
 
 @import "tailwindcss";
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Prevenir zoom en inputs en iOS */
+  font-size: 16px;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: black;
+  overflow-x: hidden;
+  /* Prevenir scroll horizontal */
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  /* Usar 100dvh para mejor soporte en mobile */
 }
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Optimización para scroll mobile */
+@supports (overflow-y: overlay) {
+  body {
+    overflow-y: overlay;
+  }
+}
+
+/* Prevenir bounce scroll en iOS */
+body {
+  overscroll-behavior: none;
+}
+
+/* Mejor rendimiento en mobile */
+img {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+button {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Input optimization para mobile */
+input, textarea {
+  font-size: 16px; /* Prevenir zoom en iOS */
+}
+

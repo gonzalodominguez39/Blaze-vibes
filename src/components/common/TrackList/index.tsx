@@ -33,7 +33,7 @@ export const TrackList = ({ tracks }: TrackListProps) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
       {tracks.slice(0,20).map((track) => (
         <TrackItem key={track.id} track={track} />
       ))}

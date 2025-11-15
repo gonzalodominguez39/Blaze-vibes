@@ -60,20 +60,26 @@ export const TrackPlayer = () => {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 bg-zinc-900/95 border-t border-zinc-800 backdrop-blur-lg z-50 transition-transform duration-300 translate-y-0"
+      className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-900/98 via-zinc-900/95 to-zinc-800/80 border-t border-zinc-700/50 backdrop-blur-xl z-50 transition-transform duration-300 translate-y-0 shadow-2xl"
     >
-      <div className="max-w-screen-2xl mx-auto px-4 py-3">
-        <div className="flex items-center gap-4">
-          <PlayBackView track={track} />
+      <div className="max-w-screen-2xl mx-auto px-2 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+          <div className="order-1 sm:order-none sm:min-w-0 sm:w-auto">
+            <PlayBackView track={track} />
+          </div>
           
-          <PlayerControls />
+          <div className="order-2 sm:order-none flex-1 min-w-0">
+            <PlayerControls />
+          </div>
 
-          <ActionButtons 
-            track={track}
-            isFavorite={isFavorite}
-            onToggleFavorite={toggleFavorite}
-            onShare={shareTrack}
-          />
+          <div className="order-3 sm:order-none sm:flex-shrink-0">
+            <ActionButtons 
+              track={track}
+              isFavorite={isFavorite}
+              onToggleFavorite={toggleFavorite}
+              onShare={shareTrack}
+            />
+          </div>
         </div>
       </div>
     </div>

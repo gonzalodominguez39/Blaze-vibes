@@ -14,7 +14,7 @@ interface PlayerProps {
 }
 
 export const Player = ({ compact = false }: PlayerProps) => {
-  const { url, pause, play,setVolume, setPlayed, played,volume} =
+  const { url, pause, play,setVolume, setPlayed, played,volume, track} =
     usePlayerStore();
   const playerRef = useRef<AudioPlayer>(null);
   const [duration, setDuration] = useState<number>(0);
@@ -85,15 +85,20 @@ export const Player = ({ compact = false }: PlayerProps) => {
       }
     >
       {compact && (
-        <div className="flex items-center justify-between mb-2 px-2">
-          <span className="text-xs text-zinc-400">
+        <div className="flex items-center justify-between mb-1.5 sm:mb-2 px-1 sm:px-2 gap-1">
+          <span className="text-xs text-zinc-400 flex-shrink-0">
             {formatTime(currentTime)}
           </span>
-          <span className="text-xs text-zinc-400">{formatTime(duration)}</span>
+          <span className="hidden sm:inline text-xs text-zinc-300 font-medium flex-shrink-0">
+            {track?.title.substring(0, 30)}...
+          </span>
+          <span className="text-xs text-zinc-400 flex-shrink-0">
+            {formatTime(duration)}
+          </span>
         </div>
       )}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <AudioPlayer
           ref={playerRef}
           src={url}
@@ -124,7 +129,7 @@ export const Player = ({ compact = false }: PlayerProps) => {
           customControlsSection={[RHAP_UI.MAIN_CONTROLS]}
           customVolumeControls={compact ? [] : [RHAP_UI.VOLUME]}
         />
-        <VolumeBar playerRef={playerRef}/>
+        {!compact && <VolumeBar playerRef={playerRef}/>}
 
       </div>
     </div>
