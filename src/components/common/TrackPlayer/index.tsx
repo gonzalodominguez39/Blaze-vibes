@@ -7,7 +7,10 @@ import { usePlayerStore } from "../../../hooks/usePlayerStore";
 
 export const TrackPlayer = () => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const { track } = usePlayerStore();
+  const { track, url } = usePlayerStore();
+
+  // Si no hay URL, no mostramos nada
+  if (!url || !track) return null;
 
   useEffect(() => {
     if (track) {

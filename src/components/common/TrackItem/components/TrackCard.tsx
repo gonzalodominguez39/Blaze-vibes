@@ -3,6 +3,7 @@ import type  { Track } from "../../../../types/Track";
 import { API_BASE_URL } from "../../../../constant/API";
 import { formatDuration,formatNumber } from "../../../../utils/format";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 interface TrackCardProps {
   track: Track;
@@ -10,12 +11,16 @@ interface TrackCardProps {
 
 export const TrackCard = ({ track }: TrackCardProps) => {
   const { setUrl,setTrack } = usePlayerStore();
-  const trackStreamUrl = `${API_BASE_URL}/v1/tracks/${track.id}/stream`;
+  const [imageError, setImageError] = useState(false);
+  const [userImageError, setUserImageError] = useState(false);
+  // Usar track.stream.url si está disponible, sino construir la URL
+  const trackStreamUrl = track.stream?.url || `${API_BASE_URL}/v1/tracks/${track.id}/stream`;
   const navigate= useNavigate()
  
   const handlePlayTrack = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.stopPropagation
-    setTrack(track)
+    e.stopPropagation();
+    setTrack(track);
+    localStorage.setItem("Track", JSON.stringify(track));
     setUrl(trackStreamUrl);
   };
  
@@ -26,11 +31,21 @@ export const TrackCard = ({ track }: TrackCardProps) => {
     >
 
       <div className="relative mb-4 overflow-hidden rounded-xl">
-        <img
-          src={track.artwork?.["480x480"] || track.artwork?.["150x150"]}
-          alt={track.title}
-          className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-110"
-        />
+        {!imageError ? (
+          <img
+            src={track.artwork?.["480x480"] || track.artwork?.["150x150"]}
+            alt={track.title}
+            className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-110"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full aspect-square bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-4xl mb-2">🎵</div>
+              <p className="text-zinc-400 text-xs">Image unavailable</p>
+            </div>
+          </div>
+        )}
 
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -65,7 +80,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
 
       <div className="space-y-3"   onClick={()=>navigate(`detail/${track.id}`)} >
         <h3
-          className="text-white font-bold text-lg leading-tight bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent group-hover:from-fuchsia-400 group-hover:to-pink-400 transition-all duration-300"
+          className="font-bold text-lg leading-tight bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent group-hover:from-fuchsia-400 group-hover:to-pink-400 transition-all duration-300"
           style={{
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -77,11 +92,18 @@ export const TrackCard = ({ track }: TrackCardProps) => {
         </h3>
         <div className="flex items-center space-x-3">
           <div className="relative">
-            <img
-              src={track.user.profile_picture?.["150x150"]}
-              alt={track.user.name}
-              className="w-8 h-8 rounded-full border-2 border-zinc-600 group-hover:border-fuchsia-500 transition-colors duration-300"
-            />
+            {!userImageError ? (
+              <img
+                src={track.user.profile_picture?.["150x150"]}
+                alt={track.user.name}
+                className="w-8 h-8 rounded-full border-2 border-zinc-600 group-hover:border-fuchsia-500 transition-colors duration-300"
+                onError={() => setUserImageError(true)}
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full border-2 border-zinc-600 group-hover:border-fuchsia-500 bg-gradient-to-br from-fuchsia-600 to-pink-600 flex items-center justify-center text-white text-xs font-bold">
+                {track.user.name.charAt(0).toUpperCase()}
+              </div>
+            )}
             <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-fuchsia-500 rounded-full border-2 border-zinc-900"></div>
           </div>
           <div className="flex-1 min-w-0">

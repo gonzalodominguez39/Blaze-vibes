@@ -4,11 +4,12 @@ import { BackButton } from "../../components/common/BackButton";
 import { TrackList } from "../../components/common/TrackList";
 import { fetchTracksUnderground,fetchTracksByQuery } from "../../services/api/trackService";
 import { useQuery } from "@tanstack/react-query";
+import { TrackPlayer } from "../../components/common/TrackPlayer";
 
 export const Search = () => {
   const [query, setQuery] = useState<string>("");
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["tracksUndergraund", query],
+    queryKey: ["tracksUnderground", query],
     queryFn: () => (query ? fetchTracksByQuery(query) : fetchTracksUnderground()),
   });
 
@@ -36,13 +37,16 @@ export const Search = () => {
   }
   return (
     <div className="min-h-screen bg-black">
-
-    <div className="flex justify-between items-center mt-10 p-4">
-      <BackButton path="/" />
-      <SearchBar handleSearch={handleSearch} />
-      
-    </div>
-    <TrackList tracks={data?.data||[]} />
+      <div className="pb-24">
+        <div className="flex justify-between items-center mt-10 p-4">
+          <BackButton path="/" />
+          <SearchBar handleSearch={handleSearch} />
+        </div>
+        <div className="w-full px-6 py-8">
+          <TrackList tracks={data?.data||[]} />
+        </div>
+      </div>
+      <TrackPlayer />
     </div>
   );
 };
