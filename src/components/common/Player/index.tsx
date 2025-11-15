@@ -121,11 +121,13 @@ export const Player = ({ compact = false }: PlayerProps) => {
           showSkipControls={false}
           showFilledProgress={true}
           hasDefaultKeyBindings={true}
-          customProgressBarSection={[
-            RHAP_UI.CURRENT_TIME,
-            RHAP_UI.PROGRESS_BAR,
-            RHAP_UI.DURATION,
-          ]}
+          customProgressBarSection={
+            compact ? [RHAP_UI.PROGRESS_BAR] : [
+              RHAP_UI.CURRENT_TIME,
+              RHAP_UI.PROGRESS_BAR,
+              RHAP_UI.DURATION,
+            ]
+          }
           customControlsSection={[RHAP_UI.MAIN_CONTROLS]}
           customVolumeControls={compact ? [] : [RHAP_UI.VOLUME]}
         />
