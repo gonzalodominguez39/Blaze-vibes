@@ -2,6 +2,7 @@ import { usePlayerStore } from "../../../../hooks/usePlayerStore";
 import type  { Track } from "../../../../types/Track";
 import { API_BASE_URL } from "../../../../constant/API";
 import { formatDuration,formatNumber } from "../../../../utils/format";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 interface TrackCardProps {
@@ -10,6 +11,7 @@ interface TrackCardProps {
 
 export const TrackCard = ({ track }: TrackCardProps) => {
   const { setUrl,setTrack } = usePlayerStore();
+  const navigate = useNavigate();
   const [imageError, setImageError] = useState(false);
   const [userImageError, setUserImageError] = useState(false);
   // Usar track.stream.url si está disponible, sino construir la URL
@@ -155,7 +157,7 @@ export const TrackCard = ({ track }: TrackCardProps) => {
           <div className="h-full bg-gradient-to-r from-fuchsia-500 to-blue-500 rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out"></div>
         </div>
 
-        <div className="flex items-center justify-center space-x-2 sm:space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <div className="items-center justify-center space-x-2 sm:space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300 hidden sm:flex">
           <button className="text-zinc-400 hover:text-pink-500 transition-colors text-xs sm:text-sm font-medium">
             ♥ Like
           </button>
@@ -164,8 +166,14 @@ export const TrackCard = ({ track }: TrackCardProps) => {
             📤 Share
           </button>
 
-          <button className="text-zinc-400 hover:text-white transition-colors text-xs sm:text-sm font-medium">
-            ⋯ More
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/detail/${track.id}`);
+            }}
+            className="text-zinc-400 hover:text-white transition-colors text-xs sm:text-sm font-medium hover:bg-white/10 px-2 py-1 rounded"
+          >
+            ⋯ Ver más
           </button>
         </div>
       </div>
